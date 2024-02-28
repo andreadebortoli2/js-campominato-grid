@@ -4,3 +4,35 @@
     box-sizing: border-box;
     border: 1px dashed deepskyblue;
 }
+
+header {
+    height: 100px;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & button {
+        padding: 0.2rem 2rem;
+    }
+}
+
+main {
+    background-color: aquamarine;
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        height: 300px;
+
+        .cell {
+            width: calc(100% / 10);
+            aspect-ratio: 1;
+            border: 1px solid black;
+        }
+    }
+}
+
+footer {
+    padding: 1rem;
+}
