@@ -12,7 +12,7 @@ console.log(cell);
 container.insertAdjacentElement('beforeend', cell).classList.add('cell');
 console.log(container); */
 
-for (let i = 0; i < 100; i++) {
+/* for (let i = 1; i < 101; i++) {
     
     const cell = document.createElement('div');
 
@@ -21,18 +21,29 @@ for (let i = 0; i < 100; i++) {
     // - add a number to the cells
     //     -use the index of the array to attach the number
 
-    cell.innerHTML = `${i}`
+    cell.innerHTML = `${i}`;
 }
+ */
 
+function createGrid() {
+
+    for (let i = 1; i < 101; i++) {
+
+        const cell = document.createElement('div');
+
+        container.insertAdjacentElement('beforeend', cell).classList.add('cell');
+
+        cell.innerHTML = `${i}`;
+    };
+
+};
 
 // - add the grid creation to the button click
 //     -select the button
 //     -add eventListener
-//     -insert the griid function
-
+//     -insert the grid function
 // - add color to the clicked cell
 //     -add event listener to cells
 //     -add class to the clicked cell
-
 // - print in console the number of the cell clicked
 //     -print in console the index of the clicked cell
