@@ -25,7 +25,7 @@ console.log(container); */
 }
  */
 
-function createGrid() {
+/* function createGrid() {
 
     for (let i = 1; i < 101; i++) {
 
@@ -36,29 +36,29 @@ function createGrid() {
         cell.innerHTML = `${i}`;
     };
 
-};
+}; */
 
 // - add the grid creation to the button click
 //     -select the button
 
-const playBtn = document.querySelector('button');
+/* const playBtn = document.querySelector('button'); */
 
 //     -add eventListener
 
-playBtn.addEventListener('click', function() {
+/* playBtn.addEventListener('click', function () {
     //     -insert the grid function
     createGrid();
-    
-    
+
+
     // - add color to the clicked cell
     //     -add event listener to cells
     const cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => {
         cell.addEventListener("click", activateCell);
 
-        
+
         //     -add class to the clicked cell
-        function activateCell() {    
+        function activateCell() {
             // cells.classList.add('active');
             cell.classList.add('active');
             // - print in console the number of the cell clicked
@@ -67,7 +67,56 @@ playBtn.addEventListener('click', function() {
         };
     });
 });
+ */
 
+//-----Bonus-----
 
+// - edit function to work with differen measures set by the selector
 
+function createGrid(gridSide) {
+    
+    for (let i = 1; i < (gridSide**2)+1; i++) {
+        
+        const cell = document.createElement('div');
+        
+        container.insertAdjacentElement('beforeend', cell).classList.add('cell');
+        
+        cell.innerHTML = `${i}`;
+    };
+    
+};
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault()
+    
+    const difficulty = document.querySelector('select').value;
+
+    // console.log(difficulty);
+
+    let gridSide;
+    
+    if (difficulty === 'hard'){
+        gridSide = 10;
+    } else if (difficulty === 'medium') {
+        gridSide = 9;
+    } else if (difficulty === 'easy') {
+        gridSide = 7;
+    };
+    
+    // console.log(gridSide);
+
+    createGrid(gridSide);
+    
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => {
+        cell.addEventListener("click", activateCell);
+        
+        function activateCell() {
+            cell.classList.add('active');
+            console.log(cell.innerHTML);
+        };
+    });
+});
 

@@ -17,6 +17,15 @@ header {
     justify-content: space-between;
     align-items: center;
 
+    & select, & button {
+        border-radius: 0.3rem;
+    }
+
+    & select {
+        padding: 0.2rem 0.5rem;
+        width: 150px;
+    }
+
     & button {
         padding: 0.2rem 2rem;
     }
