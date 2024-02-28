@@ -83,7 +83,7 @@ function createGrid(gridSide) {
 
         cell.style.width = `calc(100% / ${gridSide})`
 
-        console.log(cell.style.width = `calc(100% / ${gridSide})`);
+        // console.log(cell.style.width = `calc(100% / ${gridSide})`);
 
         cell.innerHTML = `${i}`;
     };
@@ -111,6 +111,8 @@ form.addEventListener('submit', function (e) {
 
     // console.log(gridSide);
 
+    container.replaceChildren('')
+
     createGrid(gridSide);
 
     const cells = document.querySelectorAll(".cell");
@@ -124,3 +126,9 @@ form.addEventListener('submit', function (e) {
     });
 });
 
+/* 
+$(function() {
+    $("body").click(function() {
+        $(".parela").toggleClass('myClass');
+    });
+}); */
