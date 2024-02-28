@@ -40,10 +40,34 @@ function createGrid() {
 
 // - add the grid creation to the button click
 //     -select the button
+
+const playBtn = document.querySelector('button');
+
 //     -add eventListener
-//     -insert the grid function
-// - add color to the clicked cell
-//     -add event listener to cells
-//     -add class to the clicked cell
-// - print in console the number of the cell clicked
-//     -print in console the index of the clicked cell
+
+playBtn.addEventListener('click', function() {
+    //     -insert the grid function
+    createGrid();
+    
+    
+    // - add color to the clicked cell
+    //     -add event listener to cells
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => {
+        cell.addEventListener("click", activateCell);
+
+        
+        //     -add class to the clicked cell
+        function activateCell() {    
+            // cells.classList.add('active');
+            cell.classList.add('active');
+            // - print in console the number of the cell clicked
+            //     -print in console the index of the clicked cell
+            console.log(cell.innerHTML);
+        };
+    });
+});
+
+
+
+
