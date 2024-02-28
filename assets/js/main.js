@@ -74,45 +74,49 @@ console.log(container); */
 // - edit function to work with differen measures set by the selector
 
 function createGrid(gridSide) {
-    
-    for (let i = 1; i < (gridSide**2)+1; i++) {
-        
+
+    for (let i = 1; i < (gridSide ** 2) + 1; i++) {
+
         const cell = document.createElement('div');
-        
+
         container.insertAdjacentElement('beforeend', cell).classList.add('cell');
-        
+
+        cell.style.width = `100% / ${gridSide}`
+
+        console.log(cell.style.width = `100% / ${gridSide}`);
+
         cell.innerHTML = `${i}`;
     };
-    
+
 };
 
 const form = document.querySelector('form');
 
 form.addEventListener('submit', function (e) {
     e.preventDefault()
-    
+
     const difficulty = document.querySelector('select').value;
 
     // console.log(difficulty);
 
     let gridSide;
-    
-    if (difficulty === 'hard'){
+
+    if (difficulty === 'hard') {
         gridSide = 10;
     } else if (difficulty === 'medium') {
         gridSide = 9;
     } else if (difficulty === 'easy') {
         gridSide = 7;
     };
-    
+
     // console.log(gridSide);
 
     createGrid(gridSide);
-    
+
     const cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => {
         cell.addEventListener("click", activateCell);
-        
+
         function activateCell() {
             cell.classList.add('active');
             console.log(cell.innerHTML);

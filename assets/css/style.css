@@ -44,7 +44,6 @@ main {
         flex-wrap: wrap;
 
         .cell {
-            width: calc(100% / 10);
             aspect-ratio: 1;
             border: 1px solid black;
             display: flex;
