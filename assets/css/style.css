@@ -5,8 +5,13 @@
     border: 1px dashed deepskyblue;
 }
 
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
 header {
-    height: 100px;
+    
     padding: 2rem 1rem;
     display: flex;
     justify-content: space-between;
@@ -21,9 +26,12 @@ main {
     background-color: aquamarine;
 
     .container {
-        width: 80%;
+        width: 60%;
+        max-width: 650px;
         margin: 0 auto;
-        height: 300px;
+        padding: 3rem 0;
+        display: flex;
+        flex-wrap: wrap;
 
         .cell {
             width: calc(100% / 10);
