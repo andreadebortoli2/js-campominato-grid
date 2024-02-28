@@ -111,7 +111,8 @@ form.addEventListener('submit', function (e) {
 
     // console.log(gridSide);
 
-    container.replaceChildren('')
+    container.replaceChildren();
+    console.clear();
 
     createGrid(gridSide);
 
@@ -120,15 +121,9 @@ form.addEventListener('submit', function (e) {
         cell.addEventListener("click", activateCell);
 
         function activateCell() {
-            cell.classList.add('active');
+                cell.classList.add('active');
+                // cell.classList.toggle('active');
             console.log(cell.innerHTML);
         };
     });
 });
-
-/* 
-$(function() {
-    $("body").click(function() {
-        $(".parela").toggleClass('myClass');
-    });
-}); */
