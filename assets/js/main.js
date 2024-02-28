@@ -81,9 +81,9 @@ function createGrid(gridSide) {
 
         container.insertAdjacentElement('beforeend', cell).classList.add('cell');
 
-        cell.style.width = `100% / ${gridSide}`
+        cell.style.width = `calc(100% / ${gridSide})`
 
-        console.log(cell.style.width = `100% / ${gridSide}`);
+        console.log(cell.style.width = `calc(100% / ${gridSide})`);
 
         cell.innerHTML = `${i}`;
     };
