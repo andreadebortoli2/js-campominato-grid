@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    
+
     padding: 2rem 1rem;
     display: flex;
     justify-content: space-between;
@@ -37,6 +37,10 @@ main {
             width: calc(100% / 10);
             aspect-ratio: 1;
             border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
         }
     }
 }

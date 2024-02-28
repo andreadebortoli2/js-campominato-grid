@@ -17,10 +17,13 @@ for (let i = 0; i < 100; i++) {
     const cell = document.createElement('div');
 
     container.insertAdjacentElement('beforeend', cell).classList.add('cell');
+    
+    // - add a number to the cells
+    //     -use the index of the array to attach the number
+
+    cell.innerHTML = `${i}`
 }
 
-// - add a number to the cells
-//     -use the index of the array to attach the number
 
 // - add the grid creation to the button click
 //     -select the button
