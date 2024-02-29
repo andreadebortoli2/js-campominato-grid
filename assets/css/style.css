@@ -55,6 +55,14 @@ main {
         .active {
             background-color: lightblue;
         }
+
+        .flower {
+            background-color: gray;
+        }
+
+        .flower.active {
+            background-color: palevioletred;
+        }
     }
 }
 

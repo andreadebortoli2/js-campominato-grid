@@ -93,7 +93,8 @@ Nota: Se non vi piacciono i funghi :fungo: potete usare fiori :girasole: o cacca
     -add flower to the defined cell
 
 --Second Part
--
+-set eventListener to flower cells
+    -create css style of .flower.active
 
 --Third Part
 -
