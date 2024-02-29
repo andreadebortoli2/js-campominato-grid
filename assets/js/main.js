@@ -199,6 +199,17 @@ function flowerPositioning(grid, positions) {
     };
 };
 
+/**
+ * create a box for the result message
+ * @param {*} message message to print in the box 
+ */
+function createResultMessage(message) {
+    const resultMessage = document.createElement('div');
+    resultMessage.classList.add('result_message');
+    container.insertAdjacentElement('beforeend', resultMessage);
+    resultMessage.innerHTML = `${message}`;
+};
+
 //#######functionsEnd#######
 
 
@@ -295,37 +306,61 @@ form.addEventListener('submit', function (e) {
     console.clear();
 
     const cells = createGrid(gridSideLength);
-    console.log(cells);
+    // console.log(cells);
 
     const flowerPositionNumbers = getFlowersPosition(gridSideLength);
-    console.log(flowerPositionNumbers);
+    // console.log(flowerPositionNumbers);
 
     flowerPositioning(cells, flowerPositionNumbers);
 
-    const winNumber = cells.length - flowerPositionNumbers.length;
-    // const winNumber = 5;
+    // const winNumber = cells.length - flowerPositionNumbers.length;
+    const winNumber = 5;
 
     let clicksNumber = 0;
 
+    let flower
+
     cells.forEach((cell) => cell.addEventListener('click', function click() {
+        
+        clicksNumber++
         
         if (cell.classList.contains('flower')) {
             activateCell(cell);
             console.log('no');
-        } else if (clicksNumber === winNumber-1) {
+            flower = 'found'
+            stopClick(cells, click)
+        } else if (clicksNumber === winNumber) {
             activateCell(cell);
-            clicksNumber++
             console.log('yes');
+            flower = 'notFound'
         } else if (!cell.classList.contains('active')) {
             activateCell(cell);
-            clicksNumber++
+            // cells.forEach((cell) => cell.removeEventListener('click', click))
         };
         
-        cells.forEach((cell) => cell.removeEventListener('click', click))
         console.log(clicksNumber);
-    }))
+        
+        console.log(flower);
+        
 
+        const foundMessage = `You found the FLOWER in ${clicksNumber} try`;
+        const notFoundMessage = `You didn't find the FLOWER in ${clicksNumber} try`;
 
-
-   
+        if (flower === 'found') {
+            console.log('FOUND');
+            createResultMessage(foundMessage);
+            
+        } else if (flower === 'notFound') {
+            console.log('NOT FOUND');
+            createResultMessage(notFoundMessage);
+        }
+        
+    }));
+    
 });
+
+
+function stopClick(cells, click) {
+    cells.forEach((cell) => cell.removeEventListener('click', click))
+}
+

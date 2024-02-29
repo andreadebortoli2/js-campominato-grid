@@ -64,6 +64,15 @@ main {
             background-color: palevioletred;
         }
     }
+
+    .result_message {
+        height: 50px;
+        width: 500px;
+        margin: 2rem auto 0;
+        line-height: 50px;
+        background-color: palegoldenrod;
+        text-align: center;
+    }
 }
 
 footer {
