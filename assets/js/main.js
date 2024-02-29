@@ -73,17 +73,15 @@ console.log(container); */
 
 // - edit function to work with differen measures set by the selector
 
-
 const form = document.querySelector('form');
 
-form.addEventListener('submit', function (e) {
+/* form.addEventListener('submit', function (e) {
     e.preventDefault()
 
 
     const difficulty = document.querySelector('select').value;
     // console.log(difficulty);
 
-    let gridSideLength;
 
     if (difficulty === 'hard') {
         gridSideLength = 10;
@@ -98,9 +96,10 @@ form.addEventListener('submit', function (e) {
 
     createGrid(gridSideLength);
 
+}); */
 
-});
 
+//#######functionsStart#######
 
 /**
  * generate a grid
@@ -118,20 +117,19 @@ function createGrid(size) {
 
         container.insertAdjacentElement('beforeend', cell);
 
-        cell.style.width = `calc(100% / ${size})`
+        cell.style.width = `calc(100% / ${size})`;
         // console.log(cell.style.width = `calc(100% / ${gridSide})`);
 
         cell.innerHTML = `${i}`;
 
     };
-    // cell.addEventListener('click', activateCell(cell))
 
     const cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => {
         cell.addEventListener("click", function () {
-            activateCell(cell)
+            activateCell(cell);
         });
-    })
+    });
 };
 
 /**
@@ -143,22 +141,60 @@ function activateCell(node) {
     console.log(node.innerHTML);
 };
 
+/**
+ * generate a number between 1 and max
+ * @param {*} max highest number/limit 
+ * @returns number
+ */
+function getFlowerPositionNumber(max) {
+    return Math.floor(Math.random() * (max - 1 + 1)) + 1;
+};
+
+/**
+ * create an array of random numbers (position for flowers)
+ * @param {*} numb position max limit
+ */
+function getFlowersPosition(numb) {
+
+    const flowerQuantity = 16;
+
+    const flowerPositionNumbers = [];
+
+    // console.log(flowerPositionNumbers);
+
+    while (flowerPositionNumbers.length < flowerQuantity) {
+
+        const flowerPosition = getFlowerPositionNumber(numb ** 2);
+
+        if (!flowerPositionNumbers.includes(flowerPosition)) {
+            flowerPositionNumbers.push(flowerPosition);
+        };
+    };
+    // console.log(flowerPositionNumbers);
+
+    return flowerPositionNumbers
+};
+
+//#######functionsEnd#######
+
+
 // --First Part
 // - generate 16 casual numbers between 1 and 100
 //     -generate a casual number between 1 and 100
-const min = 1;
+/* const min = 1;
 const max = 100;
 function getFlowerPositionNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}; */
 //     -put numbers in an array
-const flowerQuantity = 16;
+
+/* const flowerQuantity = 16;
 const flowerPositionNumbers = [];
-console.log(flowerPositionNumbers);
+console.log(flowerPositionNumbers); */
 //     -now genmerate 16 of them
-while (flowerPositionNumbers.length < flowerQuantity) {
-    
-    const flowerPosition = getFlowerPositionNumber(min, max)
+/* while (flowerPositionNumbers.length < flowerQuantity) {
+
+    const flowerPosition = getFlowerPositionNumber(max)
 
     //     -check if numbers are doubled
     if (!flowerPositionNumbers.includes(flowerPosition)) {
@@ -166,11 +202,14 @@ while (flowerPositionNumbers.length < flowerQuantity) {
         flowerPositionNumbers.push(flowerPosition)
     }
 }
-console.log(flowerPositionNumbers);
+console.log(flowerPositionNumbers); */
 
-// -set the limits of the generation of numbers
+// -set the limits of the random generation of numbers
 //     -set the generation as a function
 //     -edit the parameters of the function
+/* function getFlowerPositionNumber(max) {
+    return Math.floor(Math.random() * (max - 1 + 1)) + 1;
+}; */
 
 // -put a flower in the random cell
 //     -join grid cells with random generated numbers
@@ -181,3 +220,30 @@ console.log(flowerPositionNumbers);
 
 // --Third Part
 // -
+
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault()
+
+
+    const difficulty = document.querySelector('select').value;
+    // console.log(difficulty);
+
+
+    if (difficulty === 'hard') {
+        gridSideLength = 10;
+    } else if (difficulty === 'medium') {
+        gridSideLength = 9;
+    } else if (difficulty === 'easy') {
+        gridSideLength = 7;
+    };
+    // console.log(gridSideLength);
+
+    console.clear();
+
+    createGrid(gridSideLength);
+
+    getFlowersPosition(gridSideLength);
+    console.log(getFlowersPosition(gridSideLength));
+
+});
