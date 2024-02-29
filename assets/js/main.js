@@ -128,7 +128,7 @@ function createGrid(size) {
 
     const cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => {
-        cell.addEventListener("click", function(){
+        cell.addEventListener("click", function () {
             activateCell(cell)
         });
     })
@@ -142,3 +142,42 @@ function activateCell(node) {
     node.classList.add('active');
     console.log(node.innerHTML);
 };
+
+// --First Part
+// - generate 16 casual numbers between 1 and 100
+//     -generate a casual number between 1 and 100
+const min = 1;
+const max = 100;
+function getFlowerPositionNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+//     -put numbers in an array
+const flowerQuantity = 16;
+const flowerPositionNumbers = [];
+console.log(flowerPositionNumbers);
+//     -now genmerate 16 of them
+while (flowerPositionNumbers.length < flowerQuantity) {
+    
+    const flowerPosition = getFlowerPositionNumber(min, max)
+
+    //     -check if numbers are doubled
+    if (!flowerPositionNumbers.includes(flowerPosition)) {
+        //     -put them in the array
+        flowerPositionNumbers.push(flowerPosition)
+    }
+}
+console.log(flowerPositionNumbers);
+
+// -set the limits of the generation of numbers
+//     -set the generation as a function
+//     -edit the parameters of the function
+
+// -put a flower in the random cell
+//     -join grid cells with random generated numbers
+//     -add flower to the defined cell
+
+// --Second Part
+// -
+
+// --Third Part
+// -
