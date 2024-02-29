@@ -105,6 +105,7 @@ const form = document.querySelector('form');
  * generate a grid
  * create a grid with a changeble size removing old grids
  * @param {number} size number of cells for the width
+ * @returns array of cells
  */
 function createGrid(size) {
 
@@ -124,12 +125,10 @@ function createGrid(size) {
 
     };
 
-    const cells = document.querySelectorAll(".cell");
-    cells.forEach((cell) => {
-        cell.addEventListener("click", function () {
-            activateCell(cell);
-        });
-    });
+    const cells = document.querySelectorAll('.cell');
+    // console.log(cells);
+
+    return cells
 };
 
 /**
@@ -144,7 +143,7 @@ function activateCell(node) {
 /**
  * generate a number between 1 and max
  * @param {*} max highest number/limit 
- * @returns number
+ * @returns a random number
  */
 function getFlowerPositionNumber(max) {
     return Math.floor(Math.random() * (max - 1 + 1)) + 1;
@@ -153,6 +152,7 @@ function getFlowerPositionNumber(max) {
 /**
  * create an array of random numbers (position for flowers)
  * @param {*} numb position max limit
+ * @returns an array of numbers (position for flowers)
  */
 function getFlowersPosition(numb) {
 
@@ -213,6 +213,12 @@ console.log(flowerPositionNumbers); */
 
 // -put a flower in the random cell
 //     -join grid cells with random generated numbers
+/* for (let i = 0; i < cells.length; i++) {
+    
+    if (i === flowerPositionNumbers.value) {
+        cell[i].innerHTML = 'F'
+    }
+} */
 //     -add flower to the defined cell
 
 // --Second Part
@@ -241,9 +247,26 @@ form.addEventListener('submit', function (e) {
 
     console.clear();
 
-    createGrid(gridSideLength);
+    const cells = createGrid(gridSideLength);
+    console.log(cells);
 
-    getFlowersPosition(gridSideLength);
-    console.log(getFlowersPosition(gridSideLength));
+    const flowerPositionNumbers = getFlowersPosition(gridSideLength);
+    console.log(flowerPositionNumbers);
+
+    for (let i = 0; i < cells.length; i++) {
+    
+        if (flowerPositionNumbers.includes(i)) {
+            cells[i].innerHTML = 'F'
+        }
+    }
 
 });
+
+
+//-------eventListener click-------
+/* const cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => {
+        cell.addEventListener("click", function () {
+            activateCell(cell);
+        });
+    }); */
