@@ -73,57 +73,72 @@ console.log(container); */
 
 // - edit function to work with differen measures set by the selector
 
-function createGrid(gridSide) {
-
-    for (let i = 1; i < (gridSide ** 2) + 1; i++) {
-
-        const cell = document.createElement('div');
-
-        container.insertAdjacentElement('beforeend', cell).classList.add('cell');
-
-        cell.style.width = `calc(100% / ${gridSide})`
-
-        // console.log(cell.style.width = `calc(100% / ${gridSide})`);
-
-        cell.innerHTML = `${i}`;
-    };
-
-};
 
 const form = document.querySelector('form');
 
 form.addEventListener('submit', function (e) {
     e.preventDefault()
 
-    const difficulty = document.querySelector('select').value;
 
+    const difficulty = document.querySelector('select').value;
     // console.log(difficulty);
 
-    let gridSide;
+    let gridSideLength;
 
     if (difficulty === 'hard') {
-        gridSide = 10;
+        gridSideLength = 10;
     } else if (difficulty === 'medium') {
-        gridSide = 9;
+        gridSideLength = 9;
     } else if (difficulty === 'easy') {
-        gridSide = 7;
+        gridSideLength = 7;
     };
+    // console.log(gridSideLength);
 
-    // console.log(gridSide);
-
-    container.replaceChildren();
     console.clear();
 
-    createGrid(gridSide);
+    createGrid(gridSideLength);
+
+
+});
+
+
+/**
+ * generate a grid
+ * create a grid with a changeble size removing old grids
+ * @param {number} size number of cells for the width
+ */
+function createGrid(size) {
+
+    container.replaceChildren();
+
+    for (let i = 1; i <= size ** 2; i++) {
+
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        container.insertAdjacentElement('beforeend', cell);
+
+        cell.style.width = `calc(100% / ${size})`
+        // console.log(cell.style.width = `calc(100% / ${gridSide})`);
+
+        cell.innerHTML = `${i}`;
+
+    };
+    // cell.addEventListener('click', activateCell(cell))
 
     const cells = document.querySelectorAll(".cell");
     cells.forEach((cell) => {
-        cell.addEventListener("click", activateCell);
+        cell.addEventListener("click", function(){
+            activateCell(cell)
+        });
+    })
+};
 
-        function activateCell() {
-                cell.classList.add('active');
-                // cell.classList.toggle('active');
-            console.log(cell.innerHTML);
-        };
-    });
-});
+/**
+ * add class active to a node
+ * @param {*} node node to add the class
+ */
+function activateCell(node) {
+    node.classList.add('active');
+    console.log(node.innerHTML);
+};

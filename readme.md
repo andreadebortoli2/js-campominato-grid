@@ -1,3 +1,5 @@
+###PART 1
+
 # instructions
 
 Consegna
@@ -46,3 +48,52 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 - eventListener
 - click or toggle
 - classList.add/remove
+
+
+### PART 2
+
+#Instructions
+
+Consegna
+Continuate a lavorare nella stessa repo di ieri.
+
+-First Part
+Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: i funghi magici.
+Attenzione: nella stessa cella può essere posizionato al massimo un fungo, perciò nell’array dei funghi non potranno esserci due numeri uguali.
+
+-Second Part
+In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati
+- abbiamo calpestato una fungo
+- la cella si colora di rosso e la partita termina.
+Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
+-Third Part
+La partita termina quando il giocatore clicca su una fungo o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono funghi).
+Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una fungo.
+
+
+Nota: Se non vi piacciono i funghi :fungo: potete usare fiori :girasole: o cacca  :pupù: basta che non mettete bombe - purtroppo il nome della repo al momento non puó essere cambiato.
+
+# Steps
+
+--First Part
+- generate 16 casual numbers between 1 and 100
+    -generate a casual number between 1 and 100
+    -now genmerate 16 of them
+    -put them in an array
+    -check if numbers are doubled
+    -put in the array only non doubled numbers
+
+-set the limits of the generation of numbers
+    -set the generation as a function
+    -edit the parameters of the function
+
+-put a flower in the random cell
+    -join grid cells with random generated numbers
+    -add flower to the defined cell
+
+--Second Part
+-
+
+--Third Part
+-
