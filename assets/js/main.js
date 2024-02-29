@@ -102,6 +102,16 @@ const form = document.querySelector('form');
 //#######functionsStart#######
 
 /**
+ * create a cell for the grid
+ * @returns a cell for the grid
+ */
+function createCell() {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    return cell
+};
+
+/**
  * generate a grid
  * create a grid with a changeble size removing old grids
  * @param {number} size number of cells for the width
@@ -113,15 +123,14 @@ function createGrid(size) {
 
     for (let i = 1; i <= size ** 2; i++) {
 
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
+        const cell = createCell()
 
         container.insertAdjacentElement('beforeend', cell);
 
         cell.style.width = `calc(100% / ${size})`;
         // console.log(cell.style.width = `calc(100% / ${gridSide})`);
 
-        cell.innerHTML = `${i}`;
+        // cell.innerHTML = `${i}`;
 
     };
 
@@ -137,17 +146,8 @@ function createGrid(size) {
  */
 function activateCell(node) {
     node.classList.add('active');
-    console.log(node.innerHTML);
+    // console.log(node.innerHTML);
 };
-
-/**
- * add class flower to a node
- * @param {*} node node to add the class
- */
-/* function flowerCell(node) {
-    node.classList.add('flower');
-    console.log(node.innerHTML);
-}; */
 
 /**
  * generate a number between 1 and max
@@ -302,27 +302,30 @@ form.addEventListener('submit', function (e) {
 
     flowerPositioning(cells, flowerPositionNumbers);
 
-    // const winNumber = cells.length - flowerPositionNumbers.length;
-    const winNumber = 5;
+    const winNumber = cells.length - flowerPositionNumbers.length;
+    // const winNumber = 5;
 
     let clicksNumber = 0;
 
-    cells.forEach((cell) => {
-        cell.addEventListener("click", function(e) {
-            
-            
-            if (cell.classList.contains('flower' || 'active')) {
-                console.log('end game');
-            } else if (clicksNumber === winNumber) {
-                console.log('end game');
-            } else if (!cell.classList.contains('active')) {
-                activateCell(cell);
-                clicksNumber ++
-            };
+    cells.forEach((cell) => cell.addEventListener('click', function click() {
+        
+        if (cell.classList.contains('flower')) {
+            activateCell(cell);
+            console.log('no');
+        } else if (clicksNumber === winNumber-1) {
+            activateCell(cell);
+            clicksNumber++
+            console.log('yes');
+        } else if (!cell.classList.contains('active')) {
+            activateCell(cell);
+            clicksNumber++
+        };
+        
+        cells.forEach((cell) => cell.removeEventListener('click', click))
+        console.log(clicksNumber);
+    }))
 
-            
-            
-            console.log(clicksNumber);
-        });
-    });
+
+
+   
 });
