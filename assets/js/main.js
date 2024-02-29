@@ -308,26 +308,21 @@ form.addEventListener('submit', function (e) {
     let clicksNumber = 0;
 
     cells.forEach((cell) => {
-        cell.addEventListener("click", function () {
+        cell.addEventListener("click", function(e) {
             
-            activateCell(cell);
-
-
-
+            
             if (cell.classList.contains('flower' || 'active')) {
                 console.log('end game');
             } else if (clicksNumber === winNumber) {
                 console.log('end game');
-            } else{
-                clicksNumber++
+            } else if (!cell.classList.contains('active')) {
+                activateCell(cell);
+                clicksNumber ++
             };
+
+            
+            
             console.log(clicksNumber);
         });
     });
 });
-
-
-
-
-
-//-------eventListener click-------
