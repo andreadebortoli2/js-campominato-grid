@@ -320,47 +320,110 @@ form.addEventListener('submit', function (e) {
 
     let flower
 
-    cells.forEach((cell) => cell.addEventListener('click', function click() {
-        
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].addEventListener('click', click);
+    };
+
+    function click() {
+
+        this.classList.add('active');
+
         clicksNumber++
-        
-        if (cell.classList.contains('flower')) {
-            activateCell(cell);
-            console.log('no');
-            flower = 'found'
-            stopClick(cells, click)
-        } else if (clicksNumber === winNumber) {
-            activateCell(cell);
+
+        if (this.classList.contains('flower')) {
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].removeEventListener('click', click);
+            };
             console.log('yes');
-            flower = 'notFound'
-        } else if (!cell.classList.contains('active')) {
-            activateCell(cell);
-            // cells.forEach((cell) => cell.removeEventListener('click', click))
+            flower = 'found';
+
+        } else if (clicksNumber === winNumber) {
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].removeEventListener('click', click);
+            };
+            console.log('not');
+            flower ='not found';
+
+        } else {
+            document.querySelector('.cell').removeEventListener('click', click);
         };
-        
         console.log(clicksNumber);
-        
         console.log(flower);
         
-
-        const foundMessage = `You found the FLOWER in ${clicksNumber} try`;
-        const notFoundMessage = `You didn't find the FLOWER in ${clicksNumber} try`;
-
+        const attempt = clicksNumber === 1 ? 'try' : 'tries';
+        const foundMessage = `You found the FLOWER in ${clicksNumber} ${attempt}`;
+        const notFoundMessage = `You missed the FLOWER all the tries ( ${clicksNumber} )`;
+    
         if (flower === 'found') {
             console.log('FOUND');
             createResultMessage(foundMessage);
-            
-        } else if (flower === 'notFound') {
+        } else if (flower === 'not found') {
             console.log('NOT FOUND');
             createResultMessage(notFoundMessage);
-        }
-        
-    }));
+        };
+    };
+
     
+
+
+    /* cells.forEach((cell) => cell.addEventListener('click', function click() {
+
+        clicksNumber++
+
+        if (cell.classList.contains('flower')) {
+            activateCell(cell);
+            // console.log('yes');
+            flower = 'found'
+            
+            cells.forEach((cell) => cell.removeEventListener('click', click))
+             for (let i = 0; i < cells.length; i++) {
+                cells[i].removeEventListener("click", click);
+            }
+            } else if (clicksNumber === winNumber) {
+                activateCell(cell);
+                // console.log('not');
+                flower = 'notFound'
+            } else if (!cell.classList.contains('active')) {
+                activateCell(cell);
+                
+            };
+
+            console.log(clicksNumber);
+
+            console.log(flower);
+
+            const foundMessage = `You found the FLOWER in ${clicksNumber} try`;
+            const notFoundMessage = `You didn't find the FLOWER in ${clicksNumber} try`;
+
+            if (flower === 'found') {
+                // console.log('FOUND');
+                createResultMessage(foundMessage);
+            } else if (flower === 'notFound') {
+                // console.log('NOT FOUND');
+                createResultMessage(notFoundMessage);
+            };
+
+        
+    })) */
 });
 
 
-function stopClick(cells, click) {
-    cells.forEach((cell) => cell.removeEventListener('click', click))
-}
+/* function stopClick(cells, click) {
+    // cells.forEach((cell) => cell.removeEventListener('click', click))
+    for (let i = 0; i < cells.length; i++) {
+        const element = cells[i];
+        element.removeEventListener('click', click)
+    }
+} */
 
+
+
+
+// const clickCells = document.getElementsByClassName("cell");
+
+
+/* function click() {
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].removeEventListener("click", click);
+    }
+} */
