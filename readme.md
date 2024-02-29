@@ -97,4 +97,10 @@ Nota: Se non vi piacciono i funghi :fungo: potete usare fiori :girasole: o cacca
     -create css style of .flower.active
 
 --Third Part
--
+-create a function to end the game
+    -set conditions to end the game
+        -if click on the flower cell
+        -if click all the not flower cells
+            -set a click counter
+            -set a variable for the winning clicks number
+-print a message

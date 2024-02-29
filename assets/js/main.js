@@ -256,7 +256,23 @@ console.log(flowerPositionNumbers); */
 }); */
 
 // --Third Part
-// -
+// -create a function to end the game
+//     -set conditions to end the game
+//         -if click on the flower cell
+/* if (cell.classList.contains('flower' && 'active')) {
+    console.log('end game');
+} */
+//         -if click all the not flower cells
+//              -set a click counter
+/* let clicksNumber = 0;
+
+clicksNumber++ */
+//              -set a variable for the winning clicks number
+/* const winNumber = cells.length - flowerPositionNumbers.length;
+if (clicksNumber === winNumber) {
+    console.log('end game');
+} */
+// -print a message
 
 
 form.addEventListener('submit', function (e) {
@@ -286,9 +302,26 @@ form.addEventListener('submit', function (e) {
 
     flowerPositioning(cells, flowerPositionNumbers);
 
+    // const winNumber = cells.length - flowerPositionNumbers.length;
+    const winNumber = 5;
+
+    let clicksNumber = 0;
+
     cells.forEach((cell) => {
-        cell.addEventListener("click", function(e) {
+        cell.addEventListener("click", function () {
+            
             activateCell(cell);
+
+
+
+            if (cell.classList.contains('flower' || 'active')) {
+                console.log('end game');
+            } else if (clicksNumber === winNumber) {
+                console.log('end game');
+            } else{
+                clicksNumber++
+            };
+            console.log(clicksNumber);
         });
     });
 });
