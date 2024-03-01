@@ -352,6 +352,7 @@ form.addEventListener('submit', function (e) {
 
         } else if (clicksNumber === winNumber) {
             this.classList.add('active');
+            document.querySelectorAll('.flower').forEach((flower) => flower.classList.add('active'));
             for (let i = 0; i < cells.length; i++) {
                 cells[i].removeEventListener('click', click);
             };
